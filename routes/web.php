@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::resources([
         'users' => UsersController::class,
-        'lessons' => LessonsController::class
+        'lessons' => LessonsController::class,
+        'teachers' => TeachersController::class,
     ]);
 });
 
