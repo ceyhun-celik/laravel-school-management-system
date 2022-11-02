@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\TeachersController;
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
         'users' => UsersController::class,
         'lessons' => LessonsController::class,
         'teachers' => TeachersController::class,
+        'classrooms' => ClassroomsController::class,
     ]);
 });
 
