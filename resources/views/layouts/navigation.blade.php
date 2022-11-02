@@ -24,6 +24,14 @@
                         </x-nav-link>
                     </div>
                 @endcan
+
+                @can('principal')                    
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('lessons.index')" :active="request()->routeIs('lessons.index') || request()->routeIs('lessons.create') || request()->routeIs('lessons.edit')">
+                        {{ __('Lessons') }}
+                    </x-nav-link>
+                </div>
+            @endcan
             </div>
 
             <!-- Settings Dropdown -->
@@ -80,6 +88,12 @@
                     {{ __('Users') }}
                 </x-responsive-nav-link>
             @endcan
+
+            @can('principal')
+            <x-responsive-nav-link :href="route('lessons.index')" :active="request()->routeIs('lessons.index') || request()->routeIs('lessons.create') || request()->routeIs('lessons.edit')">
+                {{ __('Lessons') }}
+            </x-responsive-nav-link>
+        @endcan
         </div>
 
         <!-- Responsive Settings Options -->
