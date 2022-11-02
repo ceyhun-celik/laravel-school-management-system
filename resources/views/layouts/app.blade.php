@@ -28,6 +28,22 @@
 
             <!-- Page Content -->
             <main>
+                @if($errors->any())
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-red-100 rounded-lg py-5 px-6 mt-4 text-base text-red-700">
+                            @foreach($errors->all() as $error)
+                                <span class="block">{{ "• {$error}" }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                @if(session('success'))
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-green-100 rounded-lg py-5 px-6 mt-4 text-base text-green-700">{{ session('success') }}</div>
+                    </div>
+                @endif
+
                 {{ $slot }}
             </main>
         </div>

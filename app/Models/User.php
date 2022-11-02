@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'role_id',
         'name',
         'email',
         'password',
@@ -41,4 +42,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        if($this->role_id === Role::PRINCIPAL){
+            return 'Principal';
+        }
+
+        if($this->role_id === Role::TEACHER){
+            return 'Teacher';
+        }
+
+        if($this->role_id === Role::STUDENT){
+            return 'Student';
+        }
+    }
 }
