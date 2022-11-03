@@ -32,7 +32,7 @@
                                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $score->student->user->name }}</td>
                                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $score->midterm }}</td>
                                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $score->final }}</td>
-                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $score->result }}</td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $score->timetable->status !== 'active' ? $score->result : '' }}</td>
                                         <td>
                                             @can('teacher')
                                                 <div class="flex items-center justify-end gap-3 mr-3">
@@ -43,7 +43,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3" class="text-center text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">No record found</td>
+                                        <td colspan="8" class="text-center text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">No record found</td>
                                     </tr>
                                 @endforelse
                             </tbody>

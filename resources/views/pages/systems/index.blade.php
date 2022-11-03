@@ -1,16 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Classroom') }}: {{ $classroom->classroom_name }}
+            {{ __('Systems') }}
         </h2>
     </x-slot>
 
     <div class="max-w-7xl mx-auto mt-6 sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <form action="{{ route('classrooms.update', $classroom->id) }}" method="post" class="p-6 bg-white border-b border-gray-200"> @csrf @method('PUT')
+            <form action="{{ route('systems.store') }}" method="post" class="p-6 bg-white border-b border-gray-200"> @csrf
                 <div class="mb-4">
-                    <label for="Classroom Name" class="form-label inline-block mb-2 text-gray-700">Classroom Name</label>
-                    <input type="text" name="classroom_name" value="{{ old('classroom_name') ?? $classroom->classroom_name }}" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="Classroom Name"/>
+                    <label for="Lock Timetables" class="form-label inline-block mb-2 text-gray-700">Lock Timetables</label>
+                    <x-text-input type="datetime-local" name="lock_timetables" value="{{ $system->lock_timetables }}" id="lock_timetables" />
                 </div>
 
                 <div class="flex justify-end">

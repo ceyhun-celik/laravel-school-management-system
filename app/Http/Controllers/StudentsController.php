@@ -24,7 +24,7 @@ class StudentsController extends Controller
             ->when(auth()->user()->role_id === Role::TEACHER, function($query){
                 $query->whereHas('classroom', function($classroom){
                     $classroom->whereHas('timetables', function($timetables){
-                        $timetables->where('teacher_id', auth()->user()->teacher->id);
+                        $timetables->where('teacher_id', auth()->user()->teacher->id)->whereStatus('active');
                     });
                 });
             })

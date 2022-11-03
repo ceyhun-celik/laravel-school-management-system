@@ -9,6 +9,7 @@ use App\Models\Lesson;
 use App\Models\Role;
 use App\Models\Score;
 use App\Models\Student;
+use App\Models\System;
 use App\Models\Teacher;
 use App\Models\Timetable;
 use App\Models\User;
@@ -16,6 +17,7 @@ use App\Policies\ClassroomPolicy;
 use App\Policies\LessonPolicy;
 use App\Policies\ScorePolicy;
 use App\Policies\StudentPolicy;
+use App\Policies\SystemPolicy;
 use App\Policies\TeacherPolicy;
 use App\Policies\TimetablePolicy;
 use App\Policies\UserPolicy;
@@ -38,6 +40,7 @@ class AuthServiceProvider extends ServiceProvider
         Student::class => StudentPolicy::class,
         Timetable::class => TimetablePolicy::class,
         Score::class => ScorePolicy::class,
+        System::class => SystemPolicy::class,
     ];
 
     /**

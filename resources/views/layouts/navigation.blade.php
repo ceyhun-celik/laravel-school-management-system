@@ -72,6 +72,14 @@
                         </x-nav-link>
                     </div>
                 @endcan
+
+                @can('principal')                    
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('systems.index')" :active="request()->routeIs('systems.index')">
+                            {{ __('Systems') }}
+                        </x-nav-link>
+                    </div>
+                @endcan
             </div>
 
             <!-- Settings Dropdown -->
@@ -162,6 +170,12 @@
             @can('teacher_student')
                 <x-responsive-nav-link :href="route('scores.index')" :active="request()->routeIs('scores.index') || request()->routeIs('scores.create') || request()->routeIs('scores.edit')">
                     {{ __('Scores') }}
+                </x-responsive-nav-link>
+            @endcan
+
+            @can('principal')
+                <x-responsive-nav-link :href="route('systems.index')" :active="request()->routeIs('systems.index')">
+                    {{ __('Systems') }}
                 </x-responsive-nav-link>
             @endcan
         </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\ScoresController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\SystemsController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\TimetablesController;
 use App\Http\Controllers\UsersController;
@@ -35,7 +36,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
         'classrooms' => ClassroomsController::class,
         'students' => StudentsController::class,
         'timetables' => TimetablesController::class,
-        'scores' => ScoresController::class
+        'scores' => ScoresController::class,
+        'systems' => SystemsController::class
     ]);
 });
 

@@ -7,7 +7,6 @@
 
     <div class="max-w-7xl mx-auto mt-6 sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            
             <form action="{{ route('lessons.update', $lesson->id) }}" method="post" class="p-6 bg-white border-b border-gray-200"> @csrf @method('PUT')
                 <div class="mb-4">
                     <label for="Lesson Name" class="form-label inline-block mb-2 text-gray-700">Lesson Name</label>

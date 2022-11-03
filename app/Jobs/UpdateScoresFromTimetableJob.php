@@ -35,7 +35,7 @@ class UpdateScoresFromTimetableJob implements ShouldQueue
     {
         Score::updateOrCreate(
             ['timetable_id' => $this->data['timetable_id'], 'student_id' => $this->data['student_id']],
-            ['midterm' => $this->data['midterm'], 'final' => $this->data['final']]
+            ['midterm' => $this->data['midterm'], 'final' => $this->data['final'], 'result' => $this->data['result']]
         );
     }
 }

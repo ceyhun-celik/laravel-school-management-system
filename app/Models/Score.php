@@ -17,6 +17,7 @@ class Score extends Model
         'student_id',
         'midterm',
         'final',
+        'result'
     ];
 
     public function timetable()
