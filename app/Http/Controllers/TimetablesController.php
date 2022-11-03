@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TimetableCreateEvent;
 use App\Http\Requests\TimetablesRequest;
 use App\Jobs\UpdateScoresFromTimetableJob;
-use App\Mail\TeacherTimetableCreateMail;
+// use App\Mail\TeacherTimetableCreateMail;
 use App\Models\Classroom;
 use App\Models\Role;
 use App\Models\Teacher;
 use App\Models\Timetable;
-use Illuminate\Support\Facades\Mail;
+// use Illuminate\Support\Facades\Mail;
 
 class TimetablesController extends Controller
 {
@@ -62,8 +63,10 @@ class TimetablesController extends Controller
         if(! $exists){
             $create = Timetable::create($request->validated());
 
-            Mail::to($create->teacher->user->email)
-                ->send(new TeacherTimetableCreateMail($create));
+            event(new TimetableCreateEvent($create));
+
+            // Mail::to($create->teacher->user->email)
+            //     ->send(new TeacherTimetableCreateMail($create));
     
             return redirect()->route('timetables.index')->with('success', 'Created');
         } else{
