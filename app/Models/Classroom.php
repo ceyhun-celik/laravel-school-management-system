@@ -15,4 +15,9 @@ class Classroom extends Model
     protected $fillable = [
         'classroom_name'
     ];
+
+    public function timetables()
+    {
+        return $this->hasMany(Timetable::class);
+    }
 }

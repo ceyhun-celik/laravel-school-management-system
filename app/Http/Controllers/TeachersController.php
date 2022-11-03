@@ -39,6 +39,7 @@ class TeachersController extends Controller
             ->where('role_id', Role::TEACHER)
             ->orderBy('name')
             ->get();
+            
         $lessons = Lesson::select('id', 'lesson_name')->get();
 
         return view('pages.teachers.create', compact('users', 'lessons'));

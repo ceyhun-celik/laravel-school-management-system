@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClassroomsRequest;
 use App\Models\Classroom;
-use PhpParser\Builder\Class_;
+use App\Models\Role;
 
 class ClassroomsController extends Controller
 {
@@ -17,7 +17,13 @@ class ClassroomsController extends Controller
     {
         $this->authorize('viewAny', Classroom::class);
 
-        $classrooms = Classroom::paginate(10);
+        $classrooms = Classroom::select('id', 'classroom_name')
+            ->when(auth()->user()->role_id === Role::TEACHER, function($query){
+                $query->whereHas('timetables', function($timetables){
+                    $timetables->where('teacher_id', auth()->user()->teacher->id);
+                });
+            })
+            ->paginate(10);
 
         return view('pages.classrooms.index', compact('classrooms'));
     }

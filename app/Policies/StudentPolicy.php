@@ -6,7 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ClassroomPolicy
+class StudentPolicy
 {
     use HandlesAuthorization;
 
@@ -25,7 +25,7 @@ class ClassroomPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user)
@@ -48,7 +48,7 @@ class ClassroomPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user)
@@ -60,7 +60,7 @@ class ClassroomPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user)
@@ -72,7 +72,7 @@ class ClassroomPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user)
@@ -84,7 +84,7 @@ class ClassroomPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user)

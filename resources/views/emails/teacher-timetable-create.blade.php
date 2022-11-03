@@ -1,0 +1,1 @@
+Sayın {{ $content->teacher->user->name }}, {{ $content->classroom->classroom_name }} sınıfına dersiniz atanmıştır. İyi günler dileriz.

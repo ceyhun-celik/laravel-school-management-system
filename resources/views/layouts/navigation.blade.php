@@ -41,10 +41,26 @@
                     </div>
                 @endcan
 
-                @can('principal')                    
+                @can('principal_teacher')                    
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('classrooms.index')" :active="request()->routeIs('classrooms.index') || request()->routeIs('classrooms.create') || request()->routeIs('classrooms.edit')">
                             {{ __('Classrooms') }}
+                        </x-nav-link>
+                    </div>
+                @endcan
+
+                @can('principal_teacher')                    
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('students.index')" :active="request()->routeIs('students.index') || request()->routeIs('students.create') || request()->routeIs('students.edit')">
+                            {{ __('Students') }}
+                        </x-nav-link>
+                    </div>
+                @endcan
+
+                @can('principal_teacher')                    
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('timetables.index')" :active="request()->routeIs('timetables.index') || request()->routeIs('timetables.create') || request()->routeIs('timetables.edit')">
+                            {{ __('Timetables') }}
                         </x-nav-link>
                     </div>
                 @endcan
@@ -117,9 +133,21 @@
                 </x-responsive-nav-link>
             @endcan
 
-            @can('principal')
+            @can('principal_teacher')
                 <x-responsive-nav-link :href="route('classrooms.index')" :active="request()->routeIs('classrooms.index') || request()->routeIs('classrooms.create') || request()->routeIs('classrooms.edit')">
                     {{ __('Classrooms') }}
+                </x-responsive-nav-link>
+            @endcan
+
+            @can('principal_teacher')
+                <x-responsive-nav-link :href="route('students.index')" :active="request()->routeIs('students.index') || request()->routeIs('students.create') || request()->routeIs('students.edit')">
+                    {{ __('Students') }}
+                </x-responsive-nav-link>
+            @endcan
+
+            @can('principal_teacher')
+                <x-responsive-nav-link :href="route('timetables.index')" :active="request()->routeIs('timetables.index') || request()->routeIs('timetables.create') || request()->routeIs('timetables.edit')">
+                    {{ __('Timetables') }}
                 </x-responsive-nav-link>
             @endcan
         </div>

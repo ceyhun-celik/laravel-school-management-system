@@ -3,7 +3,9 @@
 use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TeachersController;
+use App\Http\Controllers\TimetablesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
         'lessons' => LessonsController::class,
         'teachers' => TeachersController::class,
         'classrooms' => ClassroomsController::class,
+        'students' => StudentsController::class,
+        'timetables' => TimetablesController::class,
     ]);
 });
 
