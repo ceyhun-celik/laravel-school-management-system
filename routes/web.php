@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\ScoresController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\TimetablesController;
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
         'classrooms' => ClassroomsController::class,
         'students' => StudentsController::class,
         'timetables' => TimetablesController::class,
+        'scores' => ScoresController::class
     ]);
 });
 

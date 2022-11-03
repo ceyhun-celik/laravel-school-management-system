@@ -64,6 +64,14 @@
                         </x-nav-link>
                     </div>
                 @endcan
+
+                @can('teacher_student')                    
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('scores.index')" :active="request()->routeIs('scores.index') || request()->routeIs('scores.create') || request()->routeIs('scores.edit')">
+                            {{ __('Scores') }}
+                        </x-nav-link>
+                    </div>
+                @endcan
             </div>
 
             <!-- Settings Dropdown -->
@@ -148,6 +156,12 @@
             @can('principal_teacher')
                 <x-responsive-nav-link :href="route('timetables.index')" :active="request()->routeIs('timetables.index') || request()->routeIs('timetables.create') || request()->routeIs('timetables.edit')">
                     {{ __('Timetables') }}
+                </x-responsive-nav-link>
+            @endcan
+
+            @can('teacher_student')
+                <x-responsive-nav-link :href="route('scores.index')" :active="request()->routeIs('scores.index') || request()->routeIs('scores.create') || request()->routeIs('scores.edit')">
+                    {{ __('Scores') }}
                 </x-responsive-nav-link>
             @endcan
         </div>

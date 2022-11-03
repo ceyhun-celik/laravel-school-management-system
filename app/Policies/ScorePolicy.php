@@ -6,7 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TeacherPolicy
+class ScorePolicy
 {
     use HandlesAuthorization;
 
@@ -18,7 +18,7 @@ class TeacherPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->role_id === Role::PRINCIPAL;
+        return $user->role_id === Role::TEACHER || $user->role_id === Role::STUDENT;
     }
 
     /**
@@ -29,7 +29,7 @@ class TeacherPolicy
      */
     public function view(User $user)
     {
-        return $user->role_id === Role::PRINCIPAL;
+        return $user->role_id === Role::TEACHER || $user->role_id === Role::STUDENT;
     }
 
     /**
@@ -40,7 +40,7 @@ class TeacherPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id === Role::PRINCIPAL;
+        return $user->role_id === Role::TEACHER;
     }
 
     /**
@@ -51,7 +51,7 @@ class TeacherPolicy
      */
     public function update(User $user)
     {
-        return $user->role_id === Role::PRINCIPAL;
+        return $user->role_id === Role::TEACHER;
     }
 
     /**
@@ -62,7 +62,7 @@ class TeacherPolicy
      */
     public function delete(User $user)
     {
-        return $user->role_id === Role::PRINCIPAL;
+        return $user->role_id === Role::TEACHER;
     }
 
     /**

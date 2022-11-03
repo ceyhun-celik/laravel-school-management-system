@@ -7,12 +7,14 @@ namespace App\Providers;
 use App\Models\Classroom;
 use App\Models\Lesson;
 use App\Models\Role;
+use App\Models\Score;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Timetable;
 use App\Models\User;
 use App\Policies\ClassroomPolicy;
 use App\Policies\LessonPolicy;
+use App\Policies\ScorePolicy;
 use App\Policies\StudentPolicy;
 use App\Policies\TeacherPolicy;
 use App\Policies\TimetablePolicy;
@@ -35,6 +37,7 @@ class AuthServiceProvider extends ServiceProvider
         Classroom::class => ClassroomPolicy::class,
         Student::class => StudentPolicy::class,
         Timetable::class => TimetablePolicy::class,
+        Score::class => ScorePolicy::class,
     ];
 
     /**
@@ -49,5 +52,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('principal', fn (User $user) => $user->role_id === Role::PRINCIPAL);
         Gate::define('principal_teacher', fn(User $user) => $user->role_id === Role::PRINCIPAL || $user->role_id === Role::TEACHER);
         Gate::define('teacher', fn(User $user) => $user->role_id === Role::TEACHER);
+        Gate::define('teacher_student', fn(User $user) => $user->role_id === Role::TEACHER || $user->role_id === Role::STUDENT);
     }
 }

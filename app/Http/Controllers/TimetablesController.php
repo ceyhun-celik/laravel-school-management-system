@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TimetablesRequest;
+use App\Jobs\UpdateScoresFromTimetableJob;
 use App\Mail\TeacherTimetableCreateMail;
 use App\Models\Classroom;
 use App\Models\Role;
@@ -95,7 +96,19 @@ class TimetablesController extends Controller
     {
         $this->authorize('update', Timetable::class);
 
-        //
+        $timetable = Timetable::select('id', 'classroom_id')
+            ->with(['classroom' => function($classroom) use($id){
+                $classroom->with(['students' => function($students) use($id){
+                    $students->with(['score' => function($score) use($id){
+                        $score->where('timetable_id', $id);
+                    }]);
+                }]);
+            }])
+            ->where('teacher_id', auth()->user()->teacher->id)
+            ->whereStatus('active')
+            ->findOrFail($id);
+
+        return view('pages.timetables.edit', compact('timetable'));
     }
 
     /**
@@ -109,7 +122,20 @@ class TimetablesController extends Controller
     {
         $this->authorize('update', Timetable::class);
 
-        //
+        extract($request->validated());
+
+        foreach ($student_id as $key => $value) {
+            $data = [
+                'timetable_id' => $id,
+                'student_id' => $student_id[$key],
+                'midterm' => $midterm[$key],
+                'final' => $final[$key]
+            ];
+
+            dispatch(new UpdateScoresFromTimetableJob($data));
+        }
+
+        return redirect()->route('timetables.index')->with('success', 'In Progress.. Please check 20-30 seconds later.');
     }
 
     /**
