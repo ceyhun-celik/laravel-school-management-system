@@ -9,6 +9,7 @@ use App\Http\Controllers\SystemsController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\TimetablesController;
 use App\Http\Controllers\UsersController;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
 /*

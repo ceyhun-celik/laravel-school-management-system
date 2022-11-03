@@ -10,7 +10,7 @@
             <form action="{{ route('systems.store') }}" method="post" class="p-6 bg-white border-b border-gray-200"> @csrf
                 <div class="mb-4">
                     <label for="Lock Timetables" class="form-label inline-block mb-2 text-gray-700">Lock Timetables</label>
-                    <x-text-input type="datetime-local" name="lock_timetables" value="{{ $system->lock_timetables }}" id="lock_timetables" />
+                    <x-text-input type="datetime-local" name="lock_timetables" value="{{ $system->lock_timetables ?? '' }}" id="lock_timetables" />
                 </div>
 
                 <div class="flex justify-end">

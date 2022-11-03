@@ -99,10 +99,7 @@ class ScoresController extends Controller
     {
         $this->authorize('update', Score::class);
 
-        $request = $request->validated();
-        $request['result'] = ($request['midterm'] + $request['final']) / 2;
-
-        $update = Score::find($id)->update($request);
+        $update = Score::find($id)->update($request->validated());
 
         return redirect()->route('scores.index')->with('success', 'Updated');
     }

@@ -10,20 +10,20 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class UpdateScoresFromTimetableJob implements ShouldQueue
+class ResultScoresJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $data;
+    public $score;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct(Score $score)
     {
-        $this->data = $data;
+        $this->score = $score;
     }
 
     /**
@@ -33,9 +33,6 @@ class UpdateScoresFromTimetableJob implements ShouldQueue
      */
     public function handle()
     {
-        Score::updateOrCreate(
-            ['timetable_id' => $this->data['timetable_id'], 'student_id' => $this->data['student_id']],
-            ['midterm' => $this->data['midterm'], 'final' => $this->data['final']]
-        );
+        Score::find($this->score->id)->update(['result' => ($this->score->midterm + $this->score->final) / 2]);
     }
 }

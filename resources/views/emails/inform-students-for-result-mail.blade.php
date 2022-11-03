@@ -1,0 +1,1 @@
+Notlarınız açıklanmıştır.

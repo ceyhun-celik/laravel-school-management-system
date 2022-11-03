@@ -130,7 +130,6 @@ class TimetablesController extends Controller
                 'student_id' => $student_id[$key],
                 'midterm' => $midterm[$key],
                 'final' => $final[$key],
-                'result' => ($midterm[$key] + $final[$key]) / 2
             ];
 
             dispatch(new UpdateScoresFromTimetableJob($data));
